@@ -1,1 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Seasonal Menu - Door 64</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: #ffffff;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .menu-header {
+            background: #BE5103;
+            color: white;
+            padding: 60px 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .restaurant-name {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            text-transform: none;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .menu-subtitle {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            opacity: 0.8;
+            text-transform: lowercase;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .back-nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .back-nav:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-3px);
+        }
+
+        .menu-body {
+            padding: 60px 50px;
+        }
+
+        .seasonal-menu {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            padding: 50px;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .seasonal-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #BE5103;
+            border-radius: 2px 0 0 2px;
+        }
+
+        .season-badge {
+            display: inline-block;
+            background: #BE5103;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            margin-bottom: 30px;
+        }
+
+        .menu-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-transform: lowercase;
+            letter-spacing: 4px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: #BE5103;
+        }
+
+        .section-description {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+        }
+
+        .subsection {
+            margin-bottom: 40px;
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #BE5103;
+            margin-bottom: 25px;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            padding-left: 15px;
+            border-left: 2px solid #BE5103;
+        }
+
+        .sides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .side-item {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+            color: #666;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            border-left: 3px solid #BE5103;
+            transition: all 0.3s ease;
+        }
+
+        .side-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-item {
+            margin-bottom: 35px;
+            padding: 30px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+        }
+
+        .item-description {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+            text-transform: lowercase;
+            margin-bottom: 15px;
+        }
+
+        .item-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+
+        .item-pricing {
+            text-align: right;
+            margin-left: 30px;
+        }
+
+        .main-price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #BE5103;
+            margin-bottom: 8px;
+        }
+
+        .wing-flavors {
+            margin: 20px 0;
+        }
+
+        .flavor-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+        }
+
+        .flavor-list {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-transform: lowercase;
+        }
+
+        .wing-pricing-section {
+            margin: 20px 0;
+        }
+
+        .pricing-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            border-left: 3px solid #BE5103;
+        }
+
+        .piece-count {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: lowercase;
+        }
+
+        .piece-price {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #BE5103;
+        }
+
+        .menu-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: #BE5103;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .menu-container {
+                margin: 0;
+            }
+
+            .menu-header {
+                padding: 40px 30px 30px;
+            }
+
+            .restaurant-name {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .menu-body {
+                padding: 40px 30px;
+            }
+
+            .seasonal-menu {
+                padding: 30px 25px;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .item-pricing {
+                text-align: left;
+                margin-left: 0;
+            }
+
+            .back-nav {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">
+            <a href="index.html" class="back-nav">← back to menu</a>
+            <h1 class="restaurant-name">DOOR 64</h1>
+            <p class="menu-subtitle">seasonal menu</p>
+        </div>
+
+        <div class="menu-body">
+            <div class="seasonal-menu">
+                <div class="menu-section">
+                    <h2 class="section-title">culinary excellence</h2>
+                    <p class="section-description">our kitchen crafts each dish with passion and precision, using the finest ingredients to create memorable dining experiences that celebrate flavor, creativity, and the art of cooking.</p>
+                </div>
+            </div>
+
+            <div class="seasonal-menu">
+                <div class="menu-section">
+                 <h3 class="section-title">appetizers</h3>
+                    <p class="section-description">small plates to start your journey</p>
+                    
+                    <div class="subsection">
+                        <h4 class="subsection-title">wings</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">wings & fries</h4>
+                                <p class="item-description">crispy chicken wings served with your choice of seasoning and a side of fries.</p>
+                                
+                                <div class="wing-flavors">
+                                    <h5 class="flavor-title">available flavors:</h5>
+                                    <p class="flavor-list">honey glaze, lemon pepper, chipotle buffalo, caribbean jerk, garlic parmesan, bbq, sweet thai chili, or 64 honey chipotle.</p>
+                                </div>
+                                
+                                <div class="wing-pricing-section">
+                                    <h5 class="pricing-title">pricing by count:</h5>
+                                    <div class="pricing-grid">
+                                        <div class="pricing-item">
+                                            <span class="piece-count">5 pieces</span>
+                                            <span class="piece-price">$12</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">10 pieces</span>
+                                            <span class="piece-price">$18</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-pricing"></div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h4 class="subsection-title">tacos</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">bang bang shrimp tacos <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">crispy shrimp with mango salsa and shredded lettuce</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">steak taco <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">seasoned steak with chipotle mayo, corn salsa, and fresh herbs</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">cod taco <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">beer-battered cod with green goddess sauce and pico de gallo</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">portobello taco <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">seasoned wild mushrooms with fresh pico de gallo</p>
+                                <div class="item-tags">
+                                    <span class="tag">vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <h3 class="section-title">entrees</h3>
+                    <p class="section-description">burgers, pasta & skewers</p>
+                    
+                    <div class="subsection">
+                        <h4 class="subsection-title">burgers</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">bourbon smash burger <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">double smash patties with bourbon caramelized onions and american cheese. served with fries.</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">salmon blt <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">grilled salmon with bacon, lettuce, tomato, and house aioli. served with fries.</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">veggie burger <span style="color: #BE5103;">$18</span></h4>
+                                <p class="item-description">house-made plant patty with lettuce, tomato, and onion. served with fries.</p>
+                                <div class="item-tags">
+                                    <span class="tag">vegetarian</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h4 class="subsection-title">pasta</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">basil pasta</h4>
+                                <p class="item-description">a fiery fusion of italian pasta and authentic spicy flavors. stir-fried with aromatic basil, fresh chilies, garlic, and your choice of protein in a savory-sweet sauce.</p>
+                                
+                                <div class="wing-flavors">
+                                    <h5 class="flavor-title">available proteins:</h5>
+                                    <p class="flavor-list">chicken, portobello mushrooms, shrimp, or steak.</p>
+                                </div>
+                                
+                                <div class="wing-pricing-section">
+                                    <h5 class="pricing-title">pricing by protein:</h5>
+                                    <div class="pricing-grid">
+                                        <div class="pricing-item">
+                                            <span class="piece-count">chicken</span>
+                                            <span class="piece-price">$18</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">portobello mushrooms</span>
+                                            <span class="piece-price">$19</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">shrimp</span>
+                                            <span class="piece-price">$21</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">steak</span>
+                                            <span class="piece-price">$22</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-pricing"></div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h4 class="subsection-title">skewers</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">skewers</h4>
+                                <p class="item-description">grilled to perfection on skewers and bursting with flavor. served alongside jasmine rice and fresh sautéed spinach for a perfectly balanced dish.</p>
+                                
+                                <div class="wing-flavors">
+                                    <h5 class="flavor-title">available proteins:</h5>
+                                    <p class="flavor-list">chicken, portobello mushrooms, shrimp, or steak.</p>
+                                </div>
+                                
+                                <div class="wing-pricing-section">
+                                    <h5 class="pricing-title">pricing by protein:</h5>
+                                    <div class="pricing-grid">
+                                        <div class="pricing-item">
+                                            <span class="piece-count">chicken</span>
+                                            <span class="piece-price">$18</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">portobello mushrooms</span>
+                                            <span class="piece-price">$19</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">shrimp</span>
+                                            <span class="piece-price">$21</span>
+                                        </div>
+                                        <div class="pricing-item">
+                                            <span class="piece-count">steak</span>
+                                            <span class="piece-price">$22</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-pricing"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <h3 class="section-title">sides</h3>
+                    <p class="section-description">perfect accompaniments</p>
+                    
+                    <div class="sides-grid">
+                        <div class="side-item">hibachi rice</div>
+                        <div class="side-item">vegetable fried rice</div>
+                        <div class="side-item">white rice</div>
+                        <div class="side-item">elote ribs</div>
+                        <div class="side-item">parmesan truffle fries</div>
+                        <div class="side-item">green beans</div>
+                        <div class="side-item">broccoli</div>
+                        <div class="side-item">vegetable medley</div>
+                        <div class="side-item">asparagus</div>
+                        <div class="side-item">onion rings</div>
+                        <div class="side-item">crinkle fries</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <p class="footer-text">kitchen menu available daily 5pm - 10pm</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
