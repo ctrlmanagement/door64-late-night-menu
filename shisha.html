@@ -1,1 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Premium Shisha - Door 64</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: #ffffff;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .menu-header {
+            background: #BE5103;
+            color: white;
+            padding: 60px 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .restaurant-name {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            text-transform: none;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .menu-subtitle {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            opacity: 0.8;
+            text-transform: lowercase;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .back-nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .back-nav:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-3px);
+        }
+
+        .menu-body {
+            padding: 60px 50px;
+        }
+
+        .shisha-menu {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            padding: 50px;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .shisha-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #BE5103;
+            border-radius: 2px 0 0 2px;
+        }
+
+        .menu-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-transform: lowercase;
+            letter-spacing: 4px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: #BE5103;
+        }
+
+        .section-description {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-item {
+            margin-bottom: 35px;
+            padding: 30px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #BE5103, #a34503);
+            transform: translateX(-3px);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-item:hover::before {
+            transform: translateX(0);
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .item-description {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+            text-transform: lowercase;
+            margin-bottom: 15px;
+        }
+
+        .flavor-notes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .note {
+            background: #f0f0f0;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+
+        .cooling { background: #e3f2fd; color: #1565c0; }
+        .sweet { background: #fce4ec; color: #c2185b; }
+        .citrus { background: #fff3e0; color: #ef6c00; }
+        .refreshing { background: #e8f5e8; color: #388e3c; }
+        .intense { background: #f3e5f5; color: #7b1fa2; }
+
+        .item-pricing {
+            text-align: right;
+            margin-left: 30px;
+        }
+
+        .main-price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #BE5103;
+            margin-bottom: 8px;
+        }
+
+        .shisha-info {
+            background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+            padding: 30px;
+            border-radius: 6px;
+            margin: 40px 0;
+            border-left: 4px solid #BE5103;
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+        }
+
+        .info-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-transform: lowercase;
+        }
+
+        .menu-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: #BE5103;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .menu-container {
+                margin: 0;
+            }
+
+            .menu-header {
+                padding: 40px 30px 30px;
+            }
+
+            .restaurant-name {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .menu-body {
+                padding: 40px 30px;
+            }
+
+            .shisha-menu {
+                padding: 30px 25px;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .item-pricing {
+                text-align: left;
+                margin-left: 0;
+            }
+
+            .back-nav {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">
+            <a href="index.html" class="back-nav">← back to menu</a>
+            <h1 class="restaurant-name">DOOR 64</h1>
+            <p class="menu-subtitle">premium shisha</p>
+        </div>
+
+        <div class="menu-body">
+            <div class="shisha-info">
+                <h3 class="info-title">the shisha experience</h3>
+                <p class="info-text">our premium shisha selection features expertly crafted blends using only the finest tobacco and natural flavoring. each session is prepared with precision for optimal flavor delivery and smooth, satisfying clouds.</p>
+            </div>
+
+            <div class="shisha-menu">
+                <div class="menu-section">
+                    <h3 class="section-title">signature blends</h3>
+                    <p class="section-description">expertly curated flavor profiles for an elevated experience</p>
+                    
+                    <div class="menu-item">
+                        <div class="item-content">
+                            <h4 class="item-name">blue mist</h4>
+                            <p class="item-description">sweet candied blueberries with a unique cooling sensation reminiscent of icy water, creating a refreshing experience without traditional mint</p>
+                            <div class="flavor-notes">
+                                <span class="note sweet">sweet</span>
+                                <span class="note cooling">cooling</span>
+                                <span class="note refreshing">unique</span>
+                            </div>
+                        </div>
+                        <div class="item-pricing">
+                            <div class="main-price">$45</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-content">
+                            <h4 class="item-name">mint</h4>
+                            <p class="item-description">classic refreshing mint blend delivering a clean, crisp flavor with natural cooling properties for a smooth, invigorating session</p>
+                            <div class="flavor-notes">
+                                <span class="note refreshing">classic</span>
+                                <span class="note cooling">cooling</span>
+                                <span class="note refreshing">crisp</span>
+                            </div>
+                        </div>
+                        <div class="item-pricing">
+                            <div class="main-price">$45</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-content">
+                            <h4 class="item-name">blueberry mint</h4>
+                            <p class="item-description">sweet, succulent blueberries harmoniously paired with refreshing mint that complements without overpowering the natural berry flavors</p>
+                            <div class="flavor-notes">
+                                <span class="note sweet">berry</span>
+                                <span class="note refreshing">mint</span>
+                                <span class="note refreshing">balanced</span>
+                            </div>
+                        </div>
+                        <div class="item-pricing">
+                            <div class="main-price">$45</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-content">
+                            <h4 class="item-name">orange mint</h4>
+                            <p class="item-description">zesty, juicy orange citrus perfectly balanced with cooling mint, delivering sweet and pleasant notes with rich citrus intensity</p>
+                            <div class="flavor-notes">
+                                <span class="note citrus">citrus</span>
+                                <span class="note refreshing">mint</span>
+                                <span class="note sweet">zesty</span>
+                            </div>
+                        </div>
+                        <div class="item-pricing">
+                            <div class="main-price">$45</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-content">
+                            <h4 class="item-name">mighty freeze</h4>
+                            <p class="item-description">bold combination of tart candied lemon with ice-cold spearmint, creating an intense cooling blast that awakens the senses</p>
+                            <div class="flavor-notes">
+                                <span class="note citrus">lemon</span>
+                                <span class="note intense">intense</span>
+                                <span class="note cooling">ice-cold</span>
+                            </div>
+                        </div>
+                        <div class="item-pricing">
+                            <div class="main-price">$45</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shisha-info">
+                <h3 class="info-title">preparation & service</h3>
+                <p class="info-text">each shisha is meticulously prepared using traditional techniques with modern premium equipment. sessions include fresh charcoal management and optimal heat distribution for consistent flavor throughout your experience.</p>
+            </div>
+
+            <div class="menu-footer">
+                <p class="footer-text">premium shisha available daily 5pm - Closing</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
