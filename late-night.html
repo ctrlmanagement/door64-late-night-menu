@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -189,6 +189,38 @@
             margin-bottom: 15px;
         }
 
+        .item-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+
+        .subsection {
+            margin-bottom: 40px;
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #BE5103;
+            margin-bottom: 25px;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            padding-left: 15px;
+            border-left: 2px solid #BE5103;
+        }
+
         .item-pricing {
             text-align: right;
             margin-left: 30px;
@@ -342,80 +374,102 @@
                     <h3 class="section-title">in the kitchen</h3>
                     <p class="section-description">available daily after 10pm</p>
                     
-                    <div class="menu-item">
-                        <div class="item-content">
-                            <h4 class="item-name">wings & fries</h4>
-                            <p class="item-description">crispy chicken wings served with your choice of seasoning and a side of fries.</p>
-                            
-                            <div class="wing-flavors">
-                                <h5 class="flavor-title">available flavors:</h5>
-                                <p class="flavor-list">plain, lemon pepper, ranch seasoning, sweet thai chili sauce, honey garlic, bbq, garlic parmesan, hot, mild, mumbo, honey old bay, jerk, or 64 honey chipotle.</p>
-                            </div>
-                            
-                                <div class="wing-pricing-section">
-                                    <h5 class="pricing-title">pricing by count:</h5>
-                                    <div class="pricing-grid">
-                                        <div class="pricing-item">
-                                            <span class="piece-count">6 pieces</span>
-                                            <span class="piece-price">$12</span>
-                                        </div>
-                                        <div class="pricing-item">
-                                            <span class="piece-count">10 pieces</span>
-                                            <span class="piece-price">$16</span>
-                                        </div>
-                                        <div class="pricing-item">
-                                            <span class="piece-count">20 pieces</span>
-                                            <span class="piece-price">$25</span>
-                                        </div>
-                                        <div class="pricing-item">
-                                            <span class="piece-count">25 pieces</span>
-                                            <span class="piece-price">$30</span>
-                                        </div>
-                                        <div class="pricing-item">
-                                            <span class="piece-count">30 pieces</span>
-                                            <span class="piece-price">$35</span>
-                                        </div>
-                                        <div class="pricing-item">
-                                            <span class="piece-count">40 pieces</span>
-                                            <span class="piece-price">$45</span>
-                                        </div>
-                                        <div class="pricing-item">
-                                            <span class="piece-count">50 pieces</span>
-                                            <span class="piece-price">$55</span>
+                    <div class="subsection">
+                        <h4 class="subsection-title">wings</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">wings & fries</h4>
+                                <p class="item-description">crispy chicken wings served with your choice of seasoning and a side of fries.</p>
+                                
+                                <div class="wing-flavors">
+                                    <h5 class="flavor-title">available flavors:</h5>
+                                    <p class="flavor-list">hot honey, citrus pepper, chipotle buffalo, jerked, hot, mild.</p>
+                                </div>
+                                
+                                    <div class="wing-pricing-section">
+                                        <h5 class="pricing-title">pricing by count:</h5>
+                                        <div class="pricing-grid">
+                                            <div class="pricing-item">
+                                                <span class="piece-count">5 pieces</span>
+                                                <span class="piece-price">$12</span>
+                                            </div>
+                                            <div class="pricing-item">
+                                                <span class="piece-count">10 pieces</span>
+                                                <span class="piece-price">$18</span>
+                                            </div>
+                                            <div class="pricing-item">
+                                                <span class="piece-count">20 pieces</span>
+                                                <span class="piece-price">$18</span>
+                                            </div>
                                         </div>
                                     </div>
+                            </div>
+                            <div class="item-pricing"></div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h4 class="subsection-title">tacos</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">tropicana</h4>
+                                <p class="item-description">crispy shrimp with mango salsa and shredded lettuce</p>
+                            </div>
+                            <div class="item-pricing">
+                                <div class="main-price">$18</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">char carne</h4>
+                                <p class="item-description">seasoned steak with chipotle mayo, corn salsa, and fresh herbs</p>
+                            </div>
+                            <div class="item-pricing">
+                                <div class="main-price">$18</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">forest fold taco</h4>
+                                <p class="item-description">seasoned oyster mushrooms with fresh pico de gallo</p>
+                                <div class="item-tags">
+                                    <span class="tag">vegetarian</span>
                                 </div>
-                        </div>
-                        <div class="item-pricing"></div>
-                    </div>
-
-                    <div class="menu-item">
-                        <div class="item-content">
-                            <h4 class="item-name">double smash burger</h4>
-                            <p class="item-description">two hand-formed patties with american cheese, caramelized onions, house sauce, served with crispy fries</p>
-                        </div>
-                        <div class="item-pricing">
-                            <div class="main-price">$20</div>
+                            </div>
+                            <div class="item-pricing">
+                                <div class="main-price">$18</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="menu-item">
-                        <div class="item-content">
-                            <h4 class="item-name">fried shrimp & fries</h4>
-                            <p class="item-description">buttermilk fried gulf shrimp with cocktail sauce and remoulade, served with seasoned fries</p>
+                    <div class="subsection">
+                        <h4 class="subsection-title">burgers</h4>
+                        
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">striped blt</h4>
+                                <p class="item-description">grilled salmon with bacon, lettuce, tomato, and house aioli. served with fries.</p>
+                            </div>
+                            <div class="item-pricing">
+                                <div class="main-price">$18</div>
+                            </div>
                         </div>
-                        <div class="item-pricing">
-                            <div class="main-price">$20</div>
-                        </div>
-                    </div>
 
-                    <div class="menu-item">
-                        <div class="item-content">
-                            <h4 class="item-name">parmesan truffle fries</h4>
-                            <p class="item-description">hand-cut fries tossed with truffle oil, fresh parmesan, and herbs</p>
-                        </div>
-                        <div class="item-pricing">
-                            <div class="main-price">$10</div>
+                        <div class="menu-item">
+                            <div class="item-content">
+                                <h4 class="item-name">seared garden</h4>
+                                <p class="item-description">house-made plant patty with lettuce, tomato, and onion. served with fries.</p>
+                                <div class="item-tags">
+                                    <span class="tag">vegetarian</span>
+                                </div>
+                            </div>
+                            <div class="item-pricing">
+                                <div class="main-price">$18</div>
+                            </div>
                         </div>
                     </div>
                 </div>
